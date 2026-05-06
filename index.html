@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating flowers background -->
+    <div class="flowers-container">
+        <div class="flower flower-1">🌹</div>
+        <div class="flower flower-2">🌷</div>
+        <div class="flower flower-3">🌺</div>
+        <div class="flower flower-4">🌸</div>
+        <div class="flower flower-5">🌼</div>
+    </div>
+
+    <div class="card-container">
+        <!-- Main greeting card -->
+        <div class="greeting-card">
+            <div class="card-header">
+                <h1>Happy Mother's Day!</h1>
+                <p class="subtitle">You deserve the world and more 💕</p>
+            </div>
+
+            <!-- Flower decorations on card -->
+            <div class="card-flowers">
+                <span class="card-flower">🌹</span>
+                <span class="card-flower">🌷</span>
+                <span class="card-flower">🌺</span>
+                <span class="card-flower">🌸</span>
+                <span class="card-flower">🌼</span>
+            </div>
+
+            <!-- Message input section -->
+            <div class="message-section">
+                <div class="message-box">
+                    <p id="displayMessage" class="message-text">Click below to add a special message!</p>
+                </div>
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    class="message-input" 
+                    placeholder="Write a personal message..."
+                    maxlength="200"
+                >
+                <button class="btn btn-message" onclick="updateMessage()">Add Message</button>
+            </div>
+
+            <!-- Song highlight section -->
+            <div class="song-section">
+                <h2>🎵 Special Song 🎵</h2>
+                <p class="song-title">Your Special Mother's Day Song</p>
+                <audio id="songPlayer" controls class="audio-player">
+                    <source src="your-song.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p class="song-note">Click play to hear something special for you!</p>
+            </div>
+
+            <!-- Celebration buttons -->
+            <div class="button-section">
+                <button class="btn btn-confetti" onclick="triggerConfetti()">🎉 Celebrate!</button>
+                <button class="btn btn-hearts" onclick="triggerHearts()">💕 Send Love</button>
+                <button class="btn btn-reset" onclick="resetCard()">Reset</button>
+            </div>
+
+            <!-- Footer -->
+            <p class="footer-text">With all my love...</p>
+        </div>
+    </div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Hearts container -->
+    <div id="heartsContainer" class="hearts-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
