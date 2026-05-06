@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Mother's Day 🌹</title>
+
+<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/index.umd.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  background: linear-gradient(#fff8dc, #ffd6e7, #ffffff);
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-top: 40px;
+  font-size: 3em;
+  color: #d63384;
+}
+
+/* Buttons */
+button {
+  padding: 15px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  background: #ffb6c1;
+  color: #333;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Messages */
+.message {
+  display: none;
+  margin: 20px auto;
+  width: 65%;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 1s;
+  font-size: 18px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Roses falling */
+.rose {
+  position: fixed;
+  top: -50px;
+  font-size: 30px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Mother's Day 🌹</h1>
+
+<button onclick="showMessage(1, event)">💌 Open Letter</button>
+<button onclick="showMessage(2, event)">🌸 Another Message</button>
+<button onclick="celebrate(event)">🎉 Celebrate!</button>
+<button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+
+<!-- Messages -->
+<div id="msg1" class="message">
+  Mom,<br><br>
+  You are the heart of everything I am.<br>
+  Your love has shaped my world in ways I can never fully explain.<br><br>
+  Thank you for your strength, your kindness, and your endless care 💖
+</div>
+
+<div id="msg2" class="message">
+  I hope today reminds you how deeply you are loved 🌷<br><br>
+  You deserve all the happiness, all the peace, and all the roses in the world 🌹
+</div>
+
+<!-- Music -->
+<audio id="song" src="your-song.mp3"></audio>
+
+<script>
+// Messages + confetti
+function showMessage(id, e) {
+  document.getElementById("msg" + id).style.display = "block";
+  party.confetti(e.target);
+}
+
+// Confetti + fireworks
+const fireworks = new Fireworks.default(document.body);
+
+function celebrate(e) {
+  party.confetti(e.target, {count: 60});
+  fireworks.start();
+  setTimeout(() => fireworks.stop(), 2000);
+}
+
+// Music toggle
+let playing = false;
+function toggleMusic() {
+  const song = document.getElementById("song");
+  if (!playing) {
+    song.play();
+    playing = true;
+  } else {
+    song.pause();
+    playing = false;
+  }
+}
+
+// Falling roses 🌹
+function createRose() {
+  const rose = document.createElement("div");
+  rose.classList.add("rose");
+  rose.innerText = "🌹";
+
+  rose.style.left = Math.random() * 100 + "vw";
+  rose.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(rose);
+  setTimeout(() => rose.remove(), 8000);
+}
+
+setInterval(createRose, 400);
+</script>
+
+</body>
+</html>
