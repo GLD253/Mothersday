@@ -70,6 +70,62 @@ button:hover {
     transform: translateY(110vh);
   }
 }
+
+/* Blooming flower animation */
+.blooming-flower {
+  position: fixed;
+  bottom: 0;
+  font-size: 60px;
+  animation: bloom 3s ease-in-out forwards;
+}
+
+@keyframes bloom {
+  0% {
+    bottom: -20px;
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    bottom: 100px;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Stem and leaves */
+.flower-stem {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to top, #228B22, #32CD32);
+  transform-origin: bottom;
+}
+
+/* Floating butterflies */
+.butterfly {
+  position: fixed;
+  font-size: 24px;
+  animation: flutter 6s ease-in-out infinite;
+}
+
+@keyframes flutter {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(50px) translateY(-30px);
+  }
+  50% {
+    transform: translateX(100px) translateY(0);
+  }
+  75% {
+    transform: translateX(50px) translateY(30px);
+  }
+}
 </style>
 </head>
 
@@ -140,7 +196,39 @@ function createRose() {
   setTimeout(() => rose.remove(), 8000);
 }
 
+// Blooming flowers from the ground
+function createBloomingFlower() {
+  const flowers = ["🌹", "🌷", "🌸", "🌻", "🌺"];
+  const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+  
+  const flower = document.createElement("div");
+  flower.classList.add("blooming-flower");
+  flower.innerText = randomFlower;
+  
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = (3 + Math.random() * 2) + "s";
+  
+  document.body.appendChild(flower);
+  setTimeout(() => flower.remove(), 5000);
+}
+
+// Floating butterflies
+function createButterfly() {
+  const butterfly = document.createElement("div");
+  butterfly.classList.add("butterfly");
+  butterfly.innerText = "🦋";
+  
+  butterfly.style.left = Math.random() * 100 + "vw";
+  butterfly.style.top = Math.random() * 50 + "vh";
+  butterfly.style.animationDuration = (5 + Math.random() * 4) + "s";
+  
+  document.body.appendChild(butterfly);
+  setTimeout(() => butterfly.remove(), 10000);
+}
+
 setInterval(createRose, 400);
+setInterval(createBloomingFlower, 2000);
+setInterval(createButterfly, 3000);
 </script>
 
 </body>
